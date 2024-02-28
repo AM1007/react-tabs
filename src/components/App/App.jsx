@@ -1,25 +1,34 @@
-import React from 'react';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import 'react-tabs/style/react-tabs.css';
-
-import SignIn from 'components/SignInForm/SignIn';
+import Home from 'pages/Home';
+import { Container, Header, Logo, Link } from './App.styled';
+import { Routes, Route } from 'react-router-dom';
+import About from 'pages/About';
+import Products from 'pages/Products';
+import ProductDetails from 'pages/ProductDetails';
+import NotFound from 'pages/NotFound';
 
 export const App = () => {
   return (
-    <Tabs>
-      <TabList>
-        <Tab>Title 1</Tab>
-        <Tab>Sign In Form</Tab>
-      </TabList>
-
-      <TabPanel>
-        <h2>Any content 1</h2>
-      </TabPanel>
-      <TabPanel>
-        <SignIn />
-      </TabPanel>
-    </Tabs>
+    <Container>
+      <Header>
+        <Logo>
+          <span role="img" aria-label="computer icon">
+            💻
+          </span>{' '}
+          GoMerch Store
+        </Logo>
+        <nav>
+          <Link to="/">Home</Link>
+          <Link to="/about">About</Link>
+          <Link to="/products">Products</Link>
+        </nav>
+      </Header>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/products/:id" element={<ProductDetails />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Container>
   );
 };
-
-// Temporary comment
