@@ -1,15 +1,17 @@
 import { Routes, Route } from 'react-router-dom';
-import About from 'pages/About';
-import Products from 'pages/Products';
-import ProductDetails from 'pages/ProductDetails';
-import NotFound from 'pages/NotFound';
-import Mission from 'pages/Mission';
-import Team from 'pages/Team';
-import Reviews from 'pages/Reviews';
-import Home from 'pages/Home';
+import { lazy } from 'react';
 import Sharedlayout from 'components/SharedLayout/SharedLayout';
+import NotFound from 'pages/NotFound';
 
-export const App = () => {
+const About = lazy(() => import('pages/About'));
+const Home = lazy(() => import('pages/Home'));
+const ProductDetails = lazy(() => import('pages/ProductDetails'));
+const Products = lazy(() => import('pages/Products'));
+const Mission = lazy(() => import('pages/Mission'));
+const Team = lazy(() => import('pages/Team'));
+const Reviews = lazy(() => import('pages/Reviews'));
+
+const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Sharedlayout />}>
@@ -26,3 +28,5 @@ export const App = () => {
     </Routes>
   );
 };
+
+export default App;

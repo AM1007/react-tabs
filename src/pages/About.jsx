@@ -1,5 +1,5 @@
 import { Link, Outlet } from 'react-router-dom';
-
+import { Suspense } from 'react';
 const About = () => {
   return (
     <main>
@@ -28,7 +28,9 @@ const About = () => {
           <Link to="reviews">Go through the reviews</Link>
         </li>
       </ul>
-      <Outlet />
+      <Suspense fallback={<h1>Loading subpage...</h1>}>
+        <Outlet />
+      </Suspense>
     </main>
   );
 };
